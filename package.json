@@ -1,0 +1,20 @@
+{
+  "name": "test-revers",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "request-interval": "^2.0.0",
+    "vue": "^3.2.45",
+    "vue3-uuid": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.0.0"
+  }
+}
