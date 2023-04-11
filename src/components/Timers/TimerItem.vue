@@ -7,11 +7,11 @@ import {defaultValues} from "@/utils/defaults";
 const props = defineProps({
   timer: {
     type: String,
-    default: defaultValues.timer,
+    default: defaultValues.timer.default,
   }
 })
 
-const initialTimerValue = dayjs(props.timer, 'HH:mm:ss');
+const initialTimerValue = dayjs(props.timer, defaultValues.timer.format);
 const isPaused = ref(false);
 const isFinished = ref(false);
 const timer = ref(initialTimerValue);
@@ -24,7 +24,7 @@ onMounted(() => {
     }
     timer.value = timer.value.subtract({ second: 1 });
 
-    if(timer.value.format('HH:mm:ss') <= '00:00:00') {
+    if(timerFormatted.value <= '00:00:00') {
       isFinished.value = true;
     }
   });
@@ -44,7 +44,7 @@ function resetHandler() {
   isFinished.value = false;
 }
 
-const timerFormatted = computed(() => timer.value.format('HH:mm:ss'));
+const timerFormatted = computed(() => timer.value.format(defaultValues.timer.format));
 </script>
 
 <template>

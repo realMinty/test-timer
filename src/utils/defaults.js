@@ -1,3 +1,6 @@
 export const defaultValues = {
-    timer: '00:01:00'
+    timer: {
+        default: '00:01:00',
+        format: 'HH:mm:ss'
+    }
 };
