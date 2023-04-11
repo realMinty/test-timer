@@ -16,6 +16,18 @@ const isPaused = ref(false);
 const isFinished = ref(false);
 const timer = ref(initialTimerValue);
 
+function startPauseHandler() {
+  isPaused.value = !isPaused.value
+}
+
+function resetHandler() {
+  timer.value = initialTimerValue;
+  isPaused.value = false;
+  isFinished.value = false;
+}
+
+const timerFormatted = computed(() => timer.value.format(defaultValues.timer.format));
+
 let intervalTimer = null;
 onMounted(() => {
   intervalTimer = requestInterval(1000, () => {
@@ -33,18 +45,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   requestInterval.clear(intervalTimer);
 })
-
-function startPauseHandler() {
-  isPaused.value = !isPaused.value
-}
-
-function resetHandler() {
-  timer.value = initialTimerValue;
-  isPaused.value = false;
-  isFinished.value = false;
-}
-
-const timerFormatted = computed(() => timer.value.format(defaultValues.timer.format));
 </script>
 
 <template>
