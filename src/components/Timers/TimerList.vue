@@ -2,13 +2,11 @@
 import {ref} from "vue";
 import TimerItem from "@/components/Timers/TimerItem.vue";
 import {uuid} from "vue3-uuid";
+import {defaultValues} from "@/components/Timers/TimerController";
 
-const timers = ref([{
-  id: uuid.v4(),
-  timer: '00:01:00',
-}]);
+const timers = ref([]);
 
-const inputTime = ref('00:01:00');
+const inputTime = ref(defaultValues.timer);
 function addTimerHandler() {
   timers.value.push({
     id: uuid.v4(),
@@ -19,7 +17,12 @@ function addTimerHandler() {
 
 <template>
   <div>
-    <timer-item v-for="{timer} in timers" :timer="timer"></timer-item>
+    <template v-if="timers.length">
+      <timer-item v-for="{timer} in timers" :timer="timer"></timer-item>
+    </template>
+    <template v-else>
+      На данный момент нет активных таймеров
+    </template>
   </div>
   <div>
     <input type="time" v-model="inputTime" step="2" /> <button @click="addTimerHandler">Добавить таймер</button>
