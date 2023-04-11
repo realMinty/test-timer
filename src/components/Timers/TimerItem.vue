@@ -1,8 +1,8 @@
 <script setup>
 import requestInterval from 'request-interval';
 import {computed, onBeforeUnmount, onMounted, ref} from "vue";
-import dayjs from '../../utils/dayjs';
-import {defaultValues} from "@/components/Timers/TimerController";
+import dayjs from '@/utils/dayjs';
+import {defaultValues} from "@/utils/defaults";
 
 const props = defineProps({
   timer: {

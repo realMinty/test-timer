@@ -2,7 +2,7 @@
 import {ref} from "vue";
 import TimerItem from "@/components/Timers/TimerItem.vue";
 import {uuid} from "vue3-uuid";
-import {defaultValues} from "@/components/Timers/TimerController";
+import {defaultValues} from "@/utils/defaults";
 
 const timers = ref([]);
 
